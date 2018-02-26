@@ -1,0 +1,5 @@
+venv/
+.idea/
+*.pyc
+lib/
+app.yaml
