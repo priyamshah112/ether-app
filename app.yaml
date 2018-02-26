@@ -1,0 +1,26 @@
+runtime: python
+api_version: 1
+env: flex
+entrypoint: gunicorn -b :$PORT main:app
+
+handlers:
+- url: /static
+  static_dir: static
+- url: /.*
+  script: main.app
+
+#[START env]
+env_variables:
+    # Replace user, password, database, and instance connection name with the values obtained
+    # when configuring your Cloud SQL instance.
+    SQLALCHEMY_DATABASE_URI: >-
+      postgresql+psycopg2://redash:FrDt3t3E@/subscribers?host=/cloudsql/titanium-index-174107:europe-west3:analyseether
+#[END env]
+
+
+#[START cloudsql_settings]
+# Replace project and instance with the values obtained  when configuring your
+# Cloud SQL instance.
+beta_settings:
+    cloud_sql_instances: titanium-index-174107:europe-west3:analyseether
+#[END cloudsql_settings]
