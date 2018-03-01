@@ -2,4 +2,5 @@ venv/
 .idea/
 *.pyc
 lib/
+.ropeproject/
 app.yaml
