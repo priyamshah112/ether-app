@@ -4,3 +4,5 @@ venv/
 lib/
 .ropeproject/
 app.yaml
+cloud_sql_proxy
+env/
