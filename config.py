@@ -1,10 +1,25 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
+# enviornment variables are defined in app.yaml
 
-class Config(object):
+
+class ProductionConfig(object):
+    # Configurations for development enviornment
     DEBUG = True
     TESTING = False
     CSRF_ENABLED = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'we will win the world'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'postgresql://postgres:kaushik_123@localhost/subscribers'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = os.environ['SQLALCHEMY_PROD_DATABASE_URI']
+    SECURITY_PASSWORD_SALT = os.environ['SECURITY_PASSWORD_SALT']
+
+
+class StagingConfig(object):
+    # Configurations for staging enviornment
+    DEBUG = True
+    TESTING = True
+    CSRF_ENABLED = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = os.environ['SQLALCHEMY_STAGE_DATABASE_URI']
+    SECURITY_PASSWORD_SALT = os.environ['SECURITY_PASSWORD_SALT']
