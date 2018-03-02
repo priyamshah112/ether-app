@@ -1,17 +1,8 @@
-from flask import Flask
+from analyseether import app
 from flask import render_template, redirect, url_for, request, flash, Markup
-from config import Config
+
 from models import Subscriber
 from forms import Form
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-
-
-app = Flask(__name__)
-app.config.from_object(Config)
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
