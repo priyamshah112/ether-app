@@ -1,8 +1,8 @@
-from analyseether import app
+from analyseether import app, db
 from flask import render_template, redirect, url_for, request, flash, Markup
-
 from models import Subscriber
 from forms import Form
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
