@@ -10,8 +10,7 @@ class Subscriber(db.Model):
     confirmed = db.Column(db.Boolean, nullable=False, default=False)
     confirmed_on = db.Column(db.DateTime, nullable=True)
 
-    def __init__(self, email, password, confirmed, paid=False,
-                 confirmed_on=None):
+    def __init__(self, email, confirmed, confirmed_on=None):
         self.email = email
         self.registered_on = datetime.datetime.now()
         self.confirmed = confirmed
