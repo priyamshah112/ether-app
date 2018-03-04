@@ -3,3 +3,5 @@ venv/
 *.pyc
 lib/
 app.yaml
+local_testing.sh
+.ropeproject/
