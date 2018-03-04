@@ -29,6 +29,10 @@ flask run
 ```
 
 ## Staging testing
+* Install the dependencies in library folder
+```
+pip install -t lib -r requirements.txt
+```
 * Use the file *app_yaml.frame* as a wireframe for creating the [app.yaml](https://cloud.google.com/appengine/docs/flexible/python/configuring-your-app-with-app-yaml) file.
 * Fill in the appropriate values of username, password, database and instance name
 * Deploy the version in staging enviornment using the [--version](https://cloud.google.com/sdk/gcloud/reference/app/deploy) flag, and use the `--no-promote` flag so that this version receives zero traffic.
@@ -39,6 +43,10 @@ gcloud app deploy --no-promote --version app-staging app.yaml
 
 
 ## Production launch
+* Install the dependencies in library folder
+```
+pip install -t lib -r requirements.txt
+```
 * Reuse the same app.yaml file, but drop the `--version`and `--no-promote` flags
 ```
 gcloud app deploy app.yaml
