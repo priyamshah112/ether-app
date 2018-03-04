@@ -11,9 +11,9 @@ def index():
         email = request.form['email']
         # Check that email does not already exist (not a great query, but works)
         print email
-        if not db.session.query(User).filter(User.email == email).count():
-            reg = User(email=email)
-            db.session.add(reg)
+        if not db.session.query(Subscriber).filter(Subscriber.email == email).count():
+            subscriber = Subscriber(email=email, confirmed=False)
+            db.session.add(subscriber)
             db.session.commit()
             message = Markup("Thank you for subscribing")
             flash(message)
