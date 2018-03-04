@@ -12,7 +12,7 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 # Environment variables are defined in app.yaml.
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:kaushik_123@localhost/subscribers'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 class User(db.Model):
