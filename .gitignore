@@ -4,3 +4,4 @@ venv/
 lib/
 .ropeproject/
 app.yaml
+local_testing.sh
