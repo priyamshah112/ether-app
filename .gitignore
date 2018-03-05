@@ -5,6 +5,5 @@ migrations/*.pyc
 lib/
 .ropeproject/
 app.yaml
-cloud_sql_proxy
 env/
 local_testing.sh
