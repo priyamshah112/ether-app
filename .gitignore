@@ -2,6 +2,6 @@ venv/
 .idea/
 *.pyc
 lib/
+.ropeproject/
 app.yaml
 local_testing.sh
-.ropeproject/
