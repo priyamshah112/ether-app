@@ -9,8 +9,8 @@ class ProductionConfig(object):
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = os.environ.get(['SQLALCHEMY_PROD_DATABASE_URI'])
-    SECURITY_PASSWORD_SALT = os.environ.get(['SECURITY_PASSWORD_SALT'])
+    SQLALCHEMY_DATABASE_URI = os.environ['SQLALCHEMY_PROD_DATABASE_URI']
+    SECURITY_PASSWORD_SALT = os.environ['SECURITY_PASSWORD_SALT']
 
 
 class StagingConfig(object):
