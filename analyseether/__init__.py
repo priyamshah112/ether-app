@@ -1,7 +1,8 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_mail import Mail
+from flask_mailgun import MailGun
+
 import os
 
 # Initializing database and flask app
@@ -11,7 +12,8 @@ app.config.from_object(os.environ['APP_SETTINGS'])
 # Extensions
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-mail = Mail(app)
+mailgun = MailGun()
+mailgun.init_app(app)
 
 # Importing views
 import analyseether.views
