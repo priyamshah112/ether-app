@@ -24,10 +24,9 @@ pip install -r requirements.txt
 ```
 export SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://[USER_NAME]:[PASSWORD]@127.0.0.1:[port-number]/[DATABASE_NAME]
 ```
-* Export the flask app and run flask
+* Run the server using manage.py
 ```
-export FLASK_APP=main.py
-flask run
+python manage.py runserver
 ```
 
 ## Staging testing
