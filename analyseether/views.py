@@ -33,7 +33,7 @@ def index():
             subscriber = Subscriber.query.filter_by(email=email).first_or_404()
 
             if subscriber.confirmed: # the subscriber has confirmed his email
-                message_email_already_verified = Markup('This email has been verified earlier')
+                message_email_already_verified = Markup('This email has already been verified')
                 flash(message_email_already_verified)
             else:  # resent the confirmation email
                 token = generate_confirmation_token(subscriber.email)
