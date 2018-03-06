@@ -22,16 +22,12 @@ def index():
             token = generate_confirmation_token(subscriber.email)
             print token
             confirm_url = url_for('confirm_email', token=token, _external=True)
-            html = render_template('activate_subscriber.html', confirm_url=confirm_url)
+            html = render_template('emails/subscribers.html', confirm_url=confirm_url)
             subject = "Please confirm your subscription to analyseether.com"
 
-            print subject
-            print html
-
             send_email(subscriber.email, subject, html)
-
-
-            message = Markup("Thank you for subscribing")
+            message = Markup("Thank you for subscribing, you will receive a \
+                             verification email soon")
             flash(message)
 
             return redirect(url_for('index'))
