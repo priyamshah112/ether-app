@@ -10,7 +10,7 @@ import datetime
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = Form()
-    if request.method == 'POST':
+    if request.method == 'POST' and form.validate():
         email = request.form['email']
         # Check that email does not already exist (not a great query, but works)
         if not db.session.query(Subscriber).filter(Subscriber.email == email).count():
@@ -45,6 +45,9 @@ def index():
                 message_token_resent = Markup('Email exists, we have resent you a verification email.')
                 flash(message_token_resent)
             return redirect(url_for('index', _anchor='signUpForm'))
+    elif request.method == 'POST' and not form.validate():
+        print form.email.error
+        return redirect(url_for('index', _anchor='signUpForm'))
 
     return render_template('index.html', form=form)
 
