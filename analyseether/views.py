@@ -29,6 +29,25 @@ def index():
             flash(message)
 
             return redirect(url_for('index', _anchor='signUpForm'))
+
+        else:  # The subscriber email exists in the database
+            subscriber = Subscriber.query.filter_by(email=email).first_or_404()
+
+            if subscriber.confirmed: # the subscriber has confirmed his email
+                message_email_already_verified = Markup('This email has been verified earlier')
+                flash(message_email_already_verified)
+            else:  # resent the confirmation email
+                token = generate_confirmation_token(subscriber.email)
+                confirm_url = url_for('confirm_email', token=token, _external=True)
+                html = render_template('emails/subscribers.html', confirm_url=confirm_url)
+                subject = "Please confirm your subscription to analyseether.com"
+                send_email(subscriber.email, subject, html)
+
+                message_token_resent = Markup('Email exists but has not been verified, \
+                                               we have resent you the verification email.')
+                flash(message_token_resent)
+            return redirect(url_for('index', _anchor='signUpForm'))
+
     return render_template('index.html', form=form)
 
 
@@ -37,15 +56,18 @@ def confirm_email(token):
     try:
         email = confirm_token(token)
     except:
-        flash('The confirmation link is invalid or has expired.', 'danger')
+        message_expired_token = Markup('The confirmation link is invalid or has expired.')
+        flash(message_expired_token)
 
     subscriber = Subscriber.query.filter_by(email=email).first_or_404()
     if subscriber.confirmed:
-        flash('Account already confirmed. Please login.', 'success')
+        message_email_already_verified = Markup('This email has already been verified')
+        flash(message_email_already_verified)
     else:
         subscriber.confirmed = True
         subscriber.confirmed_on = datetime.datetime.now()
         db.session.add(subscriber)
         db.session.commit()
-        flash('You have confirmed your account. Thanks!', 'success')
+        message_email_verified = Markup('Your email has been verified')
+        flash(message_email_verified)
     return redirect(url_for('index', _anchor='signUpForm'))
