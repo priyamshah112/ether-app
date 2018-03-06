@@ -2,12 +2,12 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_mailgun import MailGun
-
+from analyseether.config import StagingConfig, ProductionConfig
 import os
 
 # Initializing database and flask app
 app = Flask(__name__)
-app.config.from_object(os.environ['APP_SETTINGS'])
+app.config.from_object(StagingConfig)
 
 # Extensions
 db = SQLAlchemy(app)
