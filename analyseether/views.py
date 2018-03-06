@@ -42,11 +42,15 @@ def index():
                 subject = "Please confirm your subscription to analyseether.com"
                 send_email(subscriber.email, subject, html)
 
-                message_token_resent = Markup('Email exists, we have resent you a verification email.')
+                message_token_resent = Markup('Email exists, we have resent you \
+                                              a verification email.')
                 flash(message_token_resent)
             return redirect(url_for('index', _anchor='signUpForm'))
     elif request.method == 'POST' and not form.validate():
-        print form.email.error
+        for field, errors in form.errors.items():
+            for error in errors:
+                message_validation_error = Markup(error)
+                flash(message_validation_error)
         return redirect(url_for('index', _anchor='signUpForm'))
 
     return render_template('index.html', form=form)
