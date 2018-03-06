@@ -13,14 +13,12 @@ def index():
     if request.method == 'POST':
         email = request.form['email']
         # Check that email does not already exist (not a great query, but works)
-        print email
         if not db.session.query(Subscriber).filter(Subscriber.email == email).count():
             subscriber = Subscriber(email=email, confirmed=False)
             db.session.add(subscriber)
             db.session.commit()
 
             token = generate_confirmation_token(subscriber.email)
-            print token
             confirm_url = url_for('confirm_email', token=token, _external=True)
             html = render_template('emails/subscribers.html', confirm_url=confirm_url)
             subject = "Please confirm your subscription to analyseether.com"
@@ -30,7 +28,7 @@ def index():
                              verification email soon")
             flash(message)
 
-            return redirect(url_for('index'))
+            return redirect(url_for('index', _anchor='signUpForm'))
     return render_template('index.html', form=form)
 
 
@@ -50,4 +48,4 @@ def confirm_email(token):
         db.session.add(subscriber)
         db.session.commit()
         flash('You have confirmed your account. Thanks!', 'success')
-    return redirect(url_for('index'))
+    return redirect(url_for('index', _anchor='signUpForm'))
