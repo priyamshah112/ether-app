@@ -24,8 +24,7 @@ def index():
             subject = "Please confirm your subscription to analyseether.com"
 
             send_email(subscriber.email, subject, html)
-            message = Markup("Thank you for subscribing, you will receive a \
-                             verification email soon")
+            message = Markup("Thank you for subscribing")
             flash(message)
 
             return redirect(url_for('index', _anchor='signUpForm'))
@@ -43,8 +42,7 @@ def index():
                 subject = "Please confirm your subscription to analyseether.com"
                 send_email(subscriber.email, subject, html)
 
-                message_token_resent = Markup('Email exists but has not been verified, \
-                                               we have resent you the verification email.')
+                message_token_resent = Markup('Email exists, we have resent you a verification email.')
                 flash(message_token_resent)
             return redirect(url_for('index', _anchor='signUpForm'))
 
