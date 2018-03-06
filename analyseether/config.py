@@ -24,7 +24,7 @@ class StagingConfig(object):
     DEBUG = False
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY = os.environ['SECRET_KEY']
     SQLALCHEMY_DATABASE_URI = os.environ['SQLALCHEMY_STAGE_DATABASE_URI']
     SECURITY_PASSWORD_SALT = os.environ['SECURITY_PASSWORD_SALT']
 
