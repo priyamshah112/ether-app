@@ -14,22 +14,21 @@ There exist three testing methods:
 ```
 pip install -r requirements.txt
 ```
-* Start the cloud sql proxy using correct parameters, [more details here](https://cloud.google.com/appengine/docs/flexible/python/using-cloud-sql-postgres) 
+* Start the cloud sql proxy using correct parameters, [more details here](https://cloud.google.com/appengine/docs/flexible/python/using-cloud-sql-postgres)
 ```
 ./cloud_sql_proxy -instances=[instance-name]=tcp:[port-number] &
 ```
-* Export the SQLALCHEMY DATABASE URI 
+* Export the SQLALCHEMY DATABASE URI
 ```
 export SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://[USER_NAME]:[PASSWORD]@127.0.0.1:[port-number]/[DATABASE_NAME]
 ```
-* Export the flask app and run flask
+* Run the server using manage.py
 ```
-export FLASK_APP=main.py
-flask run
+python manage.py runserver
 ```
 
 ## Staging testing
-* Install the dependencies in library folder
+* Install the dependencies in library folder    
 ```
 pip install -t lib -r requirements.txt
 ```
@@ -52,4 +51,3 @@ pip install -t lib -r requirements.txt
 gcloud app deploy app.yaml
 ```
 * Use `gcloud app browse`to open the deployed app in browser
- 

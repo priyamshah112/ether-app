@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AnalyseEther, Browser based social platform to understand ethereum transcations.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link type="text/css" href="/static/css/ether.css" rel="stylesheet"/>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
+  </head>
+  <body>
+    <div class="top_header">
+      <div class="top_header_container">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEzkCaZBkPtGd-4CbDJ-OgIjl9L1wiqV-TtywAJxi0UsSJ2g/formrestricted" class=""> Register</a>
+        <a href="https://mvp.analyseether.com" class="">Login</a>
+      </div>
+    </div>
+    <section class="intro">
+      <div class="header">
+        <!-- {<i class="fa fa-line-chart logo" aria-hidden="true"></i>} -->
+        <img class="logo" src="static/images/analyseether_icon.png" width="150px" />
+        <h1>AnalyseEther</h1>
+        <h2>A browser based social platform to perform real-time data-analysis of ethereum transactions.</h2>
+      </div>
+      <section class="subscribe">
+        <div class="grid-row clearfix">
+          <div class="grid-3">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <h3>Query</h3>
+          </div>
+          <div class="grid-3">
+            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+            <h3>Visualize</h3>
+          </div>
+          <div class="grid-3">
+            <i class="fa fa-share" aria-hidden="true"></i>
+            <h3>Share</h3>
+          </div>
+        </div>
+      </section>
+    </section>
+    {% include 'query.html' %}
+    {% include 'signupform.html' %}
+
+     <footer class="footer bg-light">
+       <div class="container">
+        <div class="about-us">
+          <h1>About Us</h1>
+          <p>AnalyseEther is a browser based social platform to understand ethereum transcation.</p>
+          <p>Query, visualize and share your analysis to earn crytocurrency.</p>
+        </div>
+        <div class="contact-us">
+          <h1>Contact Us</h1>
+          <ul>
+            <li><a href="https://medium.com/@analyseether" target="_blank" title="AnalyseEther Medium" class="medium"><i class="fab fa-medium-m"></i></a></li>
+              <li><a href="mailto:ankit@analyseether.com" target="_top" title="AnalyseEther Gmail" class="gmail"><i class="fas fa-at" style="color:#dd4b39;"></i></a></li>
+            <li><a href="https://twitter.com/AnalyseEther" target="_blank" title="AnalyseEther Twitter" class="twitter"><i class="fab fa-twitter"></i></a></li>
+          </ul>
+        </div>
+       </div>
+       <div class="copyright">
+         <div class="footerLogo">
+          <img class="logo" src="static/images/analyseether_icon.png" width="30px" />
+         </div>
+         <div class="privacyText">
+           <p class="text">
+             Copyright @ 2018 AnalyseEther. All rights reserved.
+           </p>
+         </div>
+       </div>
+     </footer>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script>
+        var target = $('.header');
+        var targetMain = $(".intro");
+        var targetHeader = $(".top_header");
+        var targetHeight = target.outerHeight();
+        var style = ""
+        $(document).scroll(function(e){
+          var scrollY = window.scrollY
+          if(scrollY >= targetHeight) {
+            targetHeader.css("opacity", 1)
+          }
+          var diff = (targetHeight - scrollY)
+          var scrollPercent = (diff) / targetHeight;
+          if(scrollPercent < 1){
+              //target.css("transform", "scale3d("+scrollPercent+","+scrollPercent+","+scrollPercent+") translate("+(-1)*(50 + (1-scrollPercent)*100)+"%,"+(-1)*(50 + (1-scrollPercent)*100)+"%) ")
+              targetMain.css("opacity", scrollPercent)
+              //targetMain.css("transform", "translate3d(0px,"+scrollY+"0px)")
+          }
+        });
+        $(document).ready(function (e) {
+          $(".flashes").fadeTo(2000, 500).slideUp(500, function(){
+            $(".flashes").slideUp(1000);
+          });
+        });
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MQ5DPQX');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ5DPQX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  </body>
+</html>
