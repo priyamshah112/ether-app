@@ -27,7 +27,8 @@ def index():
             subject = "Please confirm your subscription to analyseether.com"
             send_email(subscriber.email, subject, html)
 
-            message = Markup("Thank you for subscribing")
+            message = Markup("Thank you for subscribing, we have sent you \
+                                              a verification email.")
             flash(message)
 
             return redirect(url_for('index', _anchor='signUpForm'))
