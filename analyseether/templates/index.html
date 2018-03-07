@@ -87,9 +87,9 @@
           var diff = (targetHeight - scrollY)
           var scrollPercent = (diff) / targetHeight;
           if(scrollPercent < 1){
-              target.css("transform", "scale3d("+scrollPercent+","+scrollPercent+","+scrollPercent+") translate("+(-1)*(50 + (1-scrollPercent)*100)+"%,"+(-1)*(50 + (1-scrollPercent)*100)+"%) ")
+              //target.css("transform", "scale3d("+scrollPercent+","+scrollPercent+","+scrollPercent+") translate("+(-1)*(50 + (1-scrollPercent)*100)+"%,"+(-1)*(50 + (1-scrollPercent)*100)+"%) ")
               targetMain.css("opacity", scrollPercent)
-              targetMain.css("transform", "translate3d(0px,"+scrollY+"0px)")
+              //targetMain.css("transform", "translate3d(0px,"+scrollY+"0px)")
           }
         });
         $(document).ready(function (e) {
