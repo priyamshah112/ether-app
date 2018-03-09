@@ -1,7 +1,5 @@
 Web app for the landing page
 
-Web app for the landing page
-
 # Testing
 This web-app is built to be deployed on the app-engine.
 There exist three testing methods:  
